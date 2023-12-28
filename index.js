@@ -76,8 +76,8 @@ bot.on('message', (event) => {
             type: 'action',
             action: {
               type: 'message',
-              text: '賽爾蒂克',
-              label: '賽爾蒂克'
+              text: '塞爾蒂克',
+              label: '塞爾蒂克'
             }
           },
           {
