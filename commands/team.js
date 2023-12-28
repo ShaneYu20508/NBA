@@ -33,12 +33,19 @@ export default async function team (event) {
 
       // 遍歷每一行
       rows.each((index, row) => {
-        const teamName = $(row).find('td a').text().trim().replace(/^\d+/, '')
+        const teamName = $(row).find('td a').text().trim()
+        let sanitizedTeamName
+        if (teamName.includes('76人')) {
+          sanitizedTeamName = '76人'
+        } else {
+          // 使用正規表達式移除開頭的數字，只保留文字部分
+          sanitizedTeamName = teamName.replace(/^\d+/, '')
+        }
         const win = $(row).find('td:eq(1)').text().trim()
         const lose = $(row).find('td:eq(2)').text().trim()
         const winRate = $(row).find('td:eq(3)').text().trim()
 
-        teamNames.push(teamName)
+        teamNames.push(sanitizedTeamName)
         winArray.push(win)
         loseArray.push(lose)
         winRateArray.push(winRate)
